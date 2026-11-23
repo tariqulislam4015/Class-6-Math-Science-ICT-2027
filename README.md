@@ -6,11 +6,11 @@
 ### ষষ্ঠ · সপ্তম · অষ্টম শ্রেণি — গণিত · বিজ্ঞান · আইসিটি দ্বিভাষিক পরিভাষা অভিধান
 **TIS-Academy Bilingual Dictionary (Bangla ⇄ English) for NCTB Class 6, 7 & 8**
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Open_App-0f6b4a?style=for-the-badge)](https://tariqulislam4015.github.io/Class-6-Math-Science-ICT-2027/)
-[![Download APK](https://img.shields.io/badge/📱_Android-Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/tariqulislam4015/Class-6-Math-Science-ICT-2027/releases/latest/download/Class-6-Math-Science-ICT-2027.apk)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Open_App-0f6b4a?style=for-the-badge)](https://tariqulislam4015.github.io/TIS-Smart-Dictionary-Class-6-8/)
+[![Download APK](https://img.shields.io/badge/📱_Android-Download_APK-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/tariqulislam4015/TIS-Smart-Dictionary-Class-6-8/releases/latest/download/TIS-Smart-Dictionary-Class-6-8.apk)
 [![YouTube](https://img.shields.io/badge/YouTube-TIS_Academy-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@tis.academy24)
 
-**🌐 Live Demo:** https://tariqulislam4015.github.io/Class-6-Math-Science-ICT-2027/
+**🌐 Live Demo:** https://tariqulislam4015.github.io/TIS-Smart-Dictionary-Class-6-8/
 
 </div>
 
@@ -55,15 +55,15 @@
 
 ## 📱 Android APK
 
-- **সরাসরি ডাউনলোড:** [Class-6-Math-Science-ICT-2027.apk](https://github.com/tariqulislam4015/Class-6-Math-Science-ICT-2027/releases/latest/download/Class-6-Math-Science-ICT-2027.apk)
-- `main` ব্রাঞ্চে প্রতিবার push করলে **GitHub Actions** নিজে থেকেই নতুন APK বানিয়ে [Releases](https://github.com/tariqulislam4015/Class-6-Math-Science-ICT-2027/releases)-এ আপলোড করে।
+- **সরাসরি ডাউনলোড:** [TIS-Smart-Dictionary-Class-6-8.apk](https://github.com/tariqulislam4015/TIS-Smart-Dictionary-Class-6-8/releases/latest/download/TIS-Smart-Dictionary-Class-6-8.apk)
+- `main` ব্রাঞ্চে প্রতিবার push করলে **GitHub Actions** নিজে থেকেই নতুন APK বানিয়ে [Releases](https://github.com/tariqulislam4015/TIS-Smart-Dictionary-Class-6-8/releases)-এ আপলোড করে।
 - নিজে বানাতে চাইলে: Android Studio → **File → Open → `android/`** → **Build → Build APK(s)**।
   APK-এর ভেতরের অ্যাপটি সরাসরি `docs/` ফোল্ডার থেকে নেওয়া হয়, তাই ওয়েব ও মোবাইল সংস্করণ সবসময় একই থাকে।
 
 ## 🗂️ প্রজেক্ট কাঠামো
 
 ```
-Class-6-Math-Science-ICT-2027/
+TIS-Smart-Dictionary-Class-6-8/
 ├── docs/                  ← ওয়েব অ্যাপ (GitHub Pages Live Demo + APK-এর ভেতরের অ্যাপ)
 │   ├── index.html         ← সম্পূর্ণ অ্যাপ (HTML + CSS + JS)
 │   ├── data_6m.js … data_8i.js ← প্রতিটি শ্রেণি-বিষয়ের পরিভাষা, অধ্যায় ও বইয়ের বাক্য
@@ -81,8 +81,8 @@ Class-6-Math-Science-ICT-2027/
 ## 💻 লোকালি চালানো
 
 ```bash
-git clone https://github.com/tariqulislam4015/Class-6-Math-Science-ICT-2027.git
-cd Class-6-Math-Science-ICT-2027/docs
+git clone https://github.com/tariqulislam4015/TIS-Smart-Dictionary-Class-6-8.git
+cd TIS-Smart-Dictionary-Class-6-8/docs
 python3 -m http.server 8000   # তারপর ব্রাউজারে http://localhost:8000
 ```
 অথবা শুধু `docs/index.html` ফাইলটি ব্রাউজারে খুলুন।
@@ -107,7 +107,7 @@ python3 -m http.server 8000   # তারপর ব্রাউজারে http
 
 - পরিভাষা ও বাক্যের উৎস: জাতীয় শিক্ষাক্রম ও পাঠ্যপুস্তক বোর্ড (NCTB), ষষ্ঠ, সপ্তম ও অষ্টম শ্রেণির গণিত, বিজ্ঞান ও তথ্য ও যোগাযোগ প্রযুক্তি পাঠ্যবই (বাংলা ভার্সন ও English Version)।
 - কিছু পরিভাষা পাঠ্যবইয়ে সরাসরি নেই; অ্যাপে সেগুলো “সহায়ক শব্দ” হিসেবে চিহ্নিত।
-- বাংলা বইয়ের লেখা স্ক্যান (OCR) থেকে নেওয়া, তাই কিছু বাক্যে ছোটখাটো বানান ভুল থাকতে পারে — ভুল চোখে পড়লে [Issue](https://github.com/tariqulislam4015/Class-6-Math-Science-ICT-2027/issues) খুলে জানান।
+- বাংলা বইয়ের লেখা স্ক্যান (OCR) থেকে নেওয়া, তাই কিছু বাক্যে ছোটখাটো বানান ভুল থাকতে পারে — ভুল চোখে পড়লে [Issue](https://github.com/tariqulislam4015/TIS-Smart-Dictionary-Class-6-8/issues) খুলে জানান।
 - `android/tis-debug.keystore` শুধু ফ্রি বিতরণের APK সাইন করার জন্য; Play Store-এ দিতে চাইলে নিজের গোপন keystore ব্যবহার করুন।
 
 <div align="center">

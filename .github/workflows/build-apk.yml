@@ -29,11 +29,11 @@ jobs:
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           gradle assembleDebug --no-daemon --stacktrace
       - name: Rename APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk ../Class-6-Math-Science-ICT-2027.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk ../TIS-Smart-Dictionary-Class-6-8.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: Class-6-Math-Science-ICT-2027-APK
-          path: Class-6-Math-Science-ICT-2027.apk
+          name: TIS-Smart-Dictionary-Class-6-8-APK
+          path: TIS-Smart-Dictionary-Class-6-8.apk
       - name: Publish to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -43,5 +43,5 @@ jobs:
             Class 6–8 (Math, Science, ICT) 2027 — ষষ্ঠ, সপ্তম ও অষ্টম শ্রেণি গণিত · বিজ্ঞান · আইসিটি ডিকশনারি — Android APK।
             ডাউনলোড করে মোবাইলে ইনস্টল করুন (প্রয়োজনে "Install unknown apps" অনুমতি দিন)।
             Built automatically from commit ${{ github.sha }}.
-          files: Class-6-Math-Science-ICT-2027.apk
+          files: TIS-Smart-Dictionary-Class-6-8.apk
           make_latest: true
