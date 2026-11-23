@@ -38,9 +38,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: apk-latest
-          name: Class 6 (Math, Science, ICT) 2027 — Android APK (latest)
+          name: Class 6–8 (Math, Science, ICT) 2027 — Android APK (latest)
           body: |
-            Class 6 (Math, Science, ICT) 2027 — ষষ্ঠ শ্রেণি গণিত · বিজ্ঞান · আইসিটি ডিকশনারি — Android APK।
+            Class 6–8 (Math, Science, ICT) 2027 — ষষ্ঠ, সপ্তম ও অষ্টম শ্রেণি গণিত · বিজ্ঞান · আইসিটি ডিকশনারি — Android APK।
             ডাউনলোড করে মোবাইলে ইনস্টল করুন (প্রয়োজনে "Install unknown apps" অনুমতি দিন)।
             Built automatically from commit ${{ github.sha }}.
           files: Class-6-Math-Science-ICT-2027.apk

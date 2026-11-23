@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0f6b4a">
-<title>Class 6 (Math, Science, ICT) 2027 — TIS-Academy Dictionary</title>
+<title>Class 6–8 (Math, Science, ICT) 2027 — TIS-Academy Dictionary</title>
 <link rel="icon" href="icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
@@ -161,6 +161,24 @@ nav.bot button.on{color:var(--brand)}
 .fxrow b{display:block;font-size:14px;color:var(--brand)}
 .count{font-size:12.5px;color:var(--muted);margin:0 4px 8px}
 .foot{text-align:center;font-size:12px;color:var(--muted);margin:22px 0 6px}
+/* ---- class + subject layout (v2027.5) */
+.searchrow{display:flex;gap:8px;align-items:center;margin-top:10px}
+.searchrow .searchbox{flex:1;margin-top:0;min-width:0}
+.dirbtn{flex:none;height:46px;min-width:64px;border-radius:14px;background:rgba(255,255,255,.18);color:#fff;font-size:12px;font-weight:700;line-height:1.15;padding:0 8px}
+.dirbtn b{display:block;font-size:14px}
+.res .c.cl{background:#334155}
+.clsrow{margin:6px 0 4px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.clsbook{border-radius:14px;padding:11px 10px;color:#fff;text-align:left;box-shadow:var(--shadow)}
+.clsbook b{display:block;font-size:15px}
+.clsbook span{font-size:11.5px;opacity:.92}
+.clsbook.m{background:linear-gradient(135deg,#1b8a4c,#0f6b4a)}
+.clsbook.s{background:linear-gradient(135deg,#2f74c8,#4a3fa0)}
+.clsbook.i{background:linear-gradient(135deg,#8a4fc4,#5b2a91)}
+.clshead{font-weight:800;font-size:15px;margin:14px 4px 2px;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;box-shadow:var(--shadow)}
+.stats b{display:block;font-size:20px;color:var(--brand)}
+.stats small{color:var(--muted);font-size:11.5px}
 </style>
 </head>
 <body>
@@ -168,28 +186,33 @@ nav.bot button.on{color:var(--brand)}
 <header class="top">
   <div class="brandrow">
     <img src="icon.svg" alt="TIS">
-    <div class="bt"><b>Class 6 (Math, Science, ICT) 2027</b><small>TIS-Academy · গণিত · বিজ্ঞান · আইসিটি ডিকশনারি</small></div>
+    <div class="bt"><b>Class 6–8 (Math, Science, ICT) 2027</b><small>TIS-Academy · গণিত · বিজ্ঞান · আইসিটি ডিকশনারি</small></div>
     <button class="iconbtn" id="backBtn" aria-label="Back" style="display:none">←</button>
     <button class="iconbtn" id="themeBtn" aria-label="Theme">🌙</button>
   </div>
-  <div class="searchbox">
-    <span aria-hidden="true">🔍</span>
-    <input id="q" type="text" enterkeyhint="search" autocomplete="off" placeholder="শব্দ লিখুন / Type a word… (যেমন: অনুপাত, cell)">
-    <button class="clr" id="clr" aria-label="Clear">✕</button>
+  <div class="searchrow">
+    <div class="searchbox">
+      <span aria-hidden="true">🔍</span>
+      <input id="q" type="text" enterkeyhint="search" autocomplete="off" placeholder="শব্দ লিখুন / Type a word…">
+      <button class="clr" id="clr" aria-label="Clear">✕</button>
+    </div>
+    <button class="dirbtn" id="dirBtn" aria-label="Direction"></button>
+  </div>
+  <div class="seg" id="cls">
+    <button data-c="all">সব শ্রেণি</button>
+    <button data-c="6">৬ষ্ঠ</button>
+    <button data-c="7">৭ম</button>
+    <button data-c="8">৮ম</button>
   </div>
   <div class="seg" id="subj">
-    <button data-s="all" class="on">সব বিষয়</button>
+    <button data-s="all">সব বিষয়</button>
     <button data-s="m">➗ গণিত</button>
     <button data-s="s">🔬 বিজ্ঞান</button>
     <button data-s="i">💻 আইসিটি</button>
   </div>
-  <div class="seg" id="dir">
-    <button data-d="bv" class="on">বাংলা → English</button>
-    <button data-d="ev">English → বাংলা</button>
-  </div>
 </header>
 <main id="view"></main>
-<div class="foot">© TIS-Academy · Teach Idea For Success · Class 6 (Math, Science, ICT) 2027</div>
+<div class="foot">© TIS-Academy · Teach Idea For Success · Class 6–8 (Math, Science, ICT) 2027</div>
 </div>
 <nav class="bot"><div class="in">
   <button data-go="#/" class="on"><span>🏠</span>হোম</button>
@@ -200,19 +223,25 @@ nav.bot button.on{color:var(--brand)}
 </div></nav>
 <div class="zoom" id="zoom"><button class="close" id="zclose">✕</button><img id="zimg" alt=""><div class="zb"><button id="zout">−</button><button id="zin">+</button></div></div>
 <div class="toast" id="toast"></div>
-<script src="data.js"></script>
+<script src="data_6m.js"></script>
+<script src="data_6s.js"></script>
+<script src="data_6i.js"></script>
+<script src="data_7m.js"></script>
+<script src="data_7s.js"></script>
+<script src="data_7i.js"></script>
+<script src="data_8m.js"></script>
+<script src="data_8s.js"></script>
+<script src="data_8i.js"></script>
 <script src="svg_m.js"></script>
 <script src="svg_s.js"></script>
 <script src="svg_i.js"></script>
 <script>
 (function(){
 "use strict";
-var RAW=window.TIS_DATA;
-var SUBJ={m:{bn:'গণিত',en:'Math',icon:'➗',CH:[
- ['স্বাভাবিক সংখ্যা ও ভগ্নাংশ','Natural Numbers and Fractions'],['অনুপাত ও শতকরা','Ratios and Percentages'],['পূর্ণসংখ্যা','Integers'],['বীজগণিতীয় রাশি','Algebraic Expressions'],['সরল সমীকরণ','Simple Equations'],['জ্যামিতির মৌলিক ধারণা','Basic Concepts of Geometry'],['ব্যবহারিক জ্যামিতি','Practical Geometry'],['তথ্য ও উপাত্ত','Information and Data']]},
- s:{bn:'বিজ্ঞান',en:'Science',icon:'🔬',CH:[
- ['বৈজ্ঞানিক প্রক্রিয়া ও পরিমাপ','Scientific Process and Measurement'],['জীবজগৎ','Living World'],['উদ্ভিদ ও প্রাণীর কোষীয় সংগঠন','Cellular Organization of Plants and Animals'],['উদ্ভিদের বাহ্যিক বৈশিষ্ট্য','Morphology of Plants'],['সালোকসংশ্লেষণ','Photosynthesis'],['সংবেদী অঙ্গ','Sensory Organs'],['পদার্থের বৈশিষ্ট্য ও বাহ্যিক প্রভাব','Properties of Matter and External Effect'],['মিশ্রণ','Mixture'],['আলোর ঘটনা','Phenomenon of Light'],['গতি','Motion'],['বল ও সরল যন্ত্র','Force and Simple Machines'],['পৃথিবীর উৎপত্তি ও গঠন','Origin and Formation of the Earth'],['খাদ্য ও পুষ্টি','Food and Nutrition'],['পরিবেশের ভারসাম্য ও আমাদের জীবন','Environmental Balance and Our Life']]},
- i:{bn:'আইসিটি',en:'ICT',icon:'💻',CH:[['তথ্য ও যোগাযোগ প্রযুক্তি পরিচিতি','Introducing Information and Communication Technology'],['তথ্য ও যোগাযোগ প্রযুক্তি সংশ্লিষ্ট যন্ত্রপাতি','Instruments Related to ICT'],['তথ্য ও যোগাযোগ প্রযুক্তির নিরাপদ ব্যবহার','Safe Use of ICT'],['ওয়ার্ড প্রসেসিং','Word Processing'],['ইন্টারনেট পরিচিতি','Introducing Internet']]}};
+var RAW=window.TIS_DATA||{};
+var SUBJ={m:{bn:'গণিত',en:'Math',icon:'➗'},s:{bn:'বিজ্ঞান',en:'Science',icon:'🔬'},i:{bn:'আইসিটি',en:'ICT',icon:'💻'}};
+var CLS={'6':'৬ষ্ঠ','7':'৭ম','8':'৮ম'};
+var BOOKS=['6m','6s','6i','7m','7s','7i','8m','8s','8i'].filter(function(k){return RAW[k];});
 var PROFILE={name:'তারিকুল ইসলাম (সুমন)',pos:'Msc Mathematics',channel:'TIS Academy',links:[
  {k:'yt',t:'YouTube — TIS Academy',u:'https://www.youtube.com/@tis.academy24'},
  {k:'fb',t:'Facebook',u:'https://www.facebook.com/tariqul.islam.422531/'},
@@ -223,13 +252,13 @@ var ICON={
  yt:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M9.5 8.2v7.6L16 12z"/></svg>',
  fb:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M13.6 21v-7.5h2.5l.4-3h-2.9V8.7c0-.9.3-1.5 1.5-1.5h1.5V4.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.3H8.2v3h2.5V21z"/></svg>',
  wa:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 3.2a8.7 8.7 0 0 0-7.5 13.1L3.3 20.8l4.6-1.2A8.7 8.7 0 1 0 12 3.2zm0 15.9c-1.4 0-2.7-.4-3.8-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1 1 12 19.1zm4-5.4c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a5.9 5.9 0 0 1-2.9-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 4 3.5 1.5.6 2.1.7 2.8.6.5-.1 1.3-.6 1.5-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>',
- gh:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.7c-2.7.6-3.2-1.2-3.2-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.1-.2-4.3-1.1-4.3-4.7 0-1 .4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.6 1a9 9 0 0 1 4.8 0c1.8-1.2 2.6-1 2.6-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.2 4.5-4.3 4.7.3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5z"/></svg>'};
-ICON.li='<svg viewBox="0 0 24 24"><path fill="#fff" d="M6.9 8.9H3.8V20h3.1zM5.3 3.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM20.2 13.6c0-3-1.6-4.9-4.3-4.9-1.4 0-2.4.8-2.8 1.5V8.9H10V20h3.1v-5.8c0-1.5.3-2.9 2.1-2.9 1.8 0 1.8 1.7 1.8 3V20h3.2z"/></svg>';
-ICON.ytFull='<svg viewBox="0 0 24 24"><path fill="#fff" d="M9.5 8.2v7.6L16 12z"/></svg>';
+ gh:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.7c-2.7.6-3.2-1.2-3.2-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.1-.2-4.3-1.1-4.3-4.7 0-1 .4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.6 1a9 9 0 0 1 4.8 0c1.8-1.2 2.6-1 2.6-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.2 4.5-4.3 4.7.3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5z"/></svg>',
+ li:'<svg viewBox="0 0 24 24"><path fill="#fff" d="M6.9 8.9H3.8V20h3.1zM5.3 3.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM20.2 13.6c0-3-1.6-4.9-4.3-4.9-1.4 0-2.4.8-2.8 1.5V8.9H10V20h3.1v-5.8c0-1.5.3-2.9 2.1-2.9 1.8 0 1.8 1.7 1.8 3V20h3.2z"/></svg>'};
+var LCOL={yt:'#ff0000',fb:'#1877f2',wa:'#25d366',gh:'#181717',li:'#0a66c2'};
 var BND='০১২৩৪৫৬৭৮৯';
 function bnNum(n){return String(n).replace(/[0-9]/g,function(d){return BND[d];});}
-function store(k,v){try{if(v===undefined){var x=localStorage.getItem('tis2_'+k);return x?JSON.parse(x):null;}localStorage.setItem('tis2_'+k,JSON.stringify(v));}catch(e){return null;}}
-var S={dir:store('dir')||'bv',subj:store('subj')||'all',fav:store('fav')||[],dark:store('dark'),recent:store('recent')||[]};
+function store(k,v){try{if(v===undefined){var x=localStorage.getItem('tis3_'+k);return x?JSON.parse(x):null;}localStorage.setItem('tis3_'+k,JSON.stringify(v));}catch(e){return null;}}
+var S={dir:store('dir')||'bv',subj:store('subj')||'all',cls:store('cls')||'all',fav:store('fav')||[],dark:store('dark'),recent:store('recent')||[]};
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 function dec(s){return String(s||'').normalize('NFC').replace(/য়/g,'য়').replace(/ড়/g,'ড়').replace(/ঢ়/g,'ঢ়').replace(/৷/g,'।');}
 function nrm(s){return dec(s).toLowerCase().replace(/[০-৯]/g,function(d){return BND.indexOf(d);});}
@@ -241,27 +270,29 @@ function hl(text,needles){
   var ranges=[];
   needles.filter(Boolean).map(nrm).filter(function(x){return x.trim().length>0;}).sort(function(a,b){return b.length-a.length;}).forEach(function(nd){
     var lat=/^[a-z]/.test(nd),re=new RegExp(rxEsc(nd).replace(/\s+/g,'\\s+'),'g'),m;
-    while((m=re.exec(n))){var s=m.index,e=s+m[0].length;if(m[0].length===0){re.lastIndex++;continue;}while(e<n.length&&/[\u0981-\u0983\u09BC\u09BE-\u09CD\u09D7\u200C\u200D]/.test(n.charAt(e)))e++;if(lat&&s>0&&/[a-z]/.test(n.charAt(s-1)))continue;if(!ranges.some(function(r){return s<r[1]&&e>r[0];}))ranges.push([s,e]);}
+    while((m=re.exec(n))){var s=m.index,e=s+m[0].length;if(m[0].length===0){re.lastIndex++;continue;}while(e<n.length&&/[ঁ-ঃ়া-্ৗ‌‍]/.test(n.charAt(e)))e++;if(lat&&s>0&&/[a-z]/.test(n.charAt(s-1)))continue;if(!ranges.some(function(r){return s<r[1]&&e>r[0];}))ranges.push([s,e]);}
   });
   ranges.sort(function(a,b){return a[0]-b[0];});
   var out='',p=0;ranges.forEach(function(r){out+=esc(t.slice(p,r[0]))+'<mark>'+esc(t.slice(r[0],r[1]))+'</mark>';p=r[1];});
   return out+esc(t.slice(p));
 }
-// build terms
 var T=[],byId={},CORP={bv:[],ev:[]};
-['m','s','i'].forEach(function(sj){
-  RAW[sj].terms.forEach(function(t){
-    t.sj=sj;t.uid=sj+t.id;
+BOOKS.forEach(function(bk){
+  var sj=bk.charAt(1),cl=bk.charAt(0);
+  RAW[bk].terms.forEach(function(t){
+    t.sj=sj;t.cl=cl;t.bk=bk;t.uid=bk+'-'+t.id;
     t.kb=[t.bn].concat(t.bnv).map(key);t.ke=[t.en].concat(t.env).map(key);
     t.nb=t.bnv.concat([t.bn.replace(/\s*\(.*\)/,'')]);t.ne=t.env.concat([t.en.replace(/\s*\(.*\)/,'')]);
     t.inBook=!!(t.book.bv.s.length||t.book.ev.s.length);
     T.push(t);byId[t.uid]=t;
   });
-  ['bv','ev'].forEach(function(b){RAW[sj].corpus[b].forEach(function(x){CORP[b].push({p:x.p,s:x.s,sj:sj});});});
+  ['bv','ev'].forEach(function(b){RAW[bk].corpus[b].forEach(function(x){CORP[b].push({p:x.p,s:x.s,sj:sj,cl:cl});});});
 });
-function inSubj(sj){return S.subj==='all'||S.subj===sj;}
-function TS(){return T.filter(function(t){return inSubj(t.sj);});}
-function chName(t){return SUBJ[t.sj].CH[t.ch-1];}
+function inScope(o){return (S.subj==='all'||S.subj===o.sj)&&(S.cls==='all'||S.cls===o.cl);}
+function TS(){return T.filter(inScope);}
+function booksInScope(){return BOOKS.filter(function(bk){return inScope({sj:bk.charAt(1),cl:bk.charAt(0)});});}
+function chName(t){return RAW[t.bk].ch[t.ch-1]||['',''];}
+function bkLabel(bk){return CLS[bk.charAt(0)]+' শ্রেণি · '+SUBJ[bk.charAt(1)].bn;}
 function svgFor(t){var f={m:window.TIS_SVG_M,s:window.TIS_SVG_S,i:window.TIS_SVG_I}[t.sj];return (t.svg&&f)?f(t.svg):'';}
 function search(q){
   var k=key(q);if(!k)return[];var bn=isBn(q),out=[];
@@ -272,54 +303,60 @@ function search(q){
     if(!sc&&k.length>2&&key(bn?t.dbn:t.den).indexOf(k)>=0)sc=12;
     if(sc)out.push({t:t,s:sc});
   });
-  out.sort(function(a,b){return b.s-a.s;});return out.map(function(x){return x.t;});
+  out.sort(function(a,b){return b.s-a.s||a.t.cl-b.t.cl;});return out.map(function(x){return x.t;});
 }
 function head(t){return S.dir==='bv'?{a:t.bn,b:t.en}:{a:t.en,b:t.bn};}
-function resItem(t,q){var h=head(t),qq=q?[q]:[];return '<button class="res" data-term="'+t.uid+'"><div class="m"><div class="a">'+hl(h.a,qq)+'</div><div class="b">'+hl(h.b,qq)+'</div><div class="x">'+esc(S.dir==='bv'?t.dbn:t.den)+'</div></div><span class="c '+t.sj+'">'+SUBJ[t.sj].bn+' · '+bnNum(t.ch)+'</span></button>';}
-function sentHTML(x,needles,ev){return '<div class="sent"><span class="pg '+(x.sj||'')+'">'+(x.sj?SUBJ[x.sj].icon+' ':'')+(ev?'EV p.'+x.p:'BV পৃ.'+bnNum(x.p))+'</span>'+hl(x.s||x.t,needles)+'</div>';}
+function resItem(t,q){var h=head(t),qq=q?[q]:[];return '<button class="res" data-term="'+t.uid+'"><div class="m"><div class="a">'+hl(h.a,qq)+'</div><div class="b">'+hl(h.b,qq)+'</div><div class="x">'+esc(S.dir==='bv'?t.dbn:t.den)+'</div></div><span class="c '+t.sj+'">'+CLS[t.cl]+' · '+SUBJ[t.sj].bn+' · '+bnNum(t.ch)+'</span></button>';}
+function sentHTML(x,needles,ev){return '<div class="sent"><span class="pg '+(x.sj||'')+'">'+(x.sj?SUBJ[x.sj].icon+' '+CLS[x.cl]+' · ':'')+(ev?'EV p.'+x.p:'BV পৃ.'+bnNum(x.p))+'</span>'+hl(x.s||x.t,needles)+'</div>';}
 function bookSearch(q,term){
   var nb=[],ne=[];if(isBn(q))nb.push(q);else ne.push(q);
   if(term){var k=key(q);if((isBn(q)?term.kb:term.ke).some(function(x){return x.indexOf(k)>=0;})){nb=nb.concat(term.nb);ne=ne.concat(term.ne);}}
-  function f(list,nd){var ks=nd.map(nrm).filter(function(x){return x.trim().length>1;});if(!ks.length)return[];var rs=ks.map(function(k){return new RegExp((/^[a-z]/.test(k)?'(^|[^a-z])':'')+rxEsc(k));});return list.filter(function(x){if(!inSubj(x.sj))return false;var n=nrm(x.s);return rs.some(function(r){return r.test(n);});});}
+  function f(list,nd){var ks=nd.map(nrm).filter(function(x){return x.trim().length>1;});if(!ks.length)return[];var rs=ks.map(function(k){return new RegExp((/^[a-z]/.test(k)?'(^|[^a-z])':'')+rxEsc(k));});return list.filter(function(x){if(!inScope(x))return false;var n=nrm(x.s);return rs.some(function(r){return r.test(n);});});}
   return {bv:f(CORP.bv,nb),ev:f(CORP.ev,ne),nb:nb,ne:ne};
 }
 var V=document.getElementById('view');
 function toast(m){var e=document.getElementById('toast');e.textContent=m;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('on');},1600);}
-function linkCards(){return PROFILE.links.map(function(l){return '<a class="lnk '+l.k+'" href="'+l.u+'" target="_blank" rel="noopener"><span class="ic">'+(l.k==='yt'?'<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="#fff" opacity=".0"/><path fill="#fff" d="M9.5 8.2v7.6L16 12z"/></svg>':ICON[l.k])+'</span><span class="tx"><b>'+l.t+'</b><small>'+l.u.replace(/^https?:\/\//,'')+'</small></span><span class="go">↗</span></a>';}).join('');}
-function profileCard(){return '<div class="prof"><div class="ava"><span class="ring"></span><img src="'+(window.TIS_ME||'me.jpg')+'" alt="তারিকুল ইসলাম (সুমন)"><span class="dot"></span></div><div class="pname">'+PROFILE.name+'</div><div class="ppos"><i></i>'+PROFILE.pos+'<i></i></div><div class="pyt">▶ YouTube Channel: <b>'+PROFILE.channel+'</b></div><div class="links">'+linkCards()+'</div></div>';}
-function miniProfile(){return '<div class="card mini" data-go="#/about"><img src="'+(window.TIS_ME||'me.jpg')+'" alt=""><div><b style="display:block;font-size:15px">'+PROFILE.name+'</b><small style="color:var(--muted)">'+PROFILE.pos+'</small></div><div class="socials">'+PROFILE.links.map(function(l){return '<a class="'+l.k+'" href="'+l.u+'" target="_blank" rel="noopener" style="background:'+({yt:'#ff0000',fb:'#1877f2',wa:'#25d366',gh:'#181717',li:'#0a66c2'})[l.k]+'">'+ICON[l.k]+'</a>';}).join('')+'</div></div>';}
+function linkCards(){return PROFILE.links.map(function(l){return '<a class="lnk '+l.k+'" href="'+l.u+'" target="_blank" rel="noopener"><span class="ic">'+ICON[l.k]+'</span><span class="tx"><b>'+l.t+'</b><small>'+l.u.replace(/^https?:\/\//,'')+'</small></span><span class="go">↗</span></a>';}).join('');}
+function meSrc(){return window.TIS_ME||'me.jpg';}
+function profileCard(){return '<div class="prof"><div class="ava"><span class="ring"></span><img src="'+meSrc()+'" alt="তারিকুল ইসলাম (সুমন)"><span class="dot"></span></div><div class="pname">'+PROFILE.name+'</div><div class="ppos"><i></i>'+PROFILE.pos+'<i></i></div><div class="pyt">▶ YouTube Channel: <b>'+PROFILE.channel+'</b></div><div class="links">'+linkCards()+'</div></div>';}
+function bookCards(cl){return '<div class="clsrow">'+['m','s','i'].filter(function(sj){return RAW[cl+sj]&&(S.subj==='all'||S.subj===sj);}).map(function(sj){var bk=cl+sj;return '<button class="clsbook '+sj+'" data-go="#/chapters/'+bk+'"><b>'+SUBJ[sj].icon+' '+SUBJ[sj].bn+'</b><span>'+bnNum(RAW[bk].terms.length)+'টি শব্দ · '+bnNum(RAW[bk].ch.length)+' অধ্যায়</span></button>';}).join('')+'</div>';}
 function vHome(){
-  var L=TS(),d=new Date(),w=L[(d.getFullYear()*372+d.getMonth()*31+d.getDate())%L.length],h=head(w);
+  var L=TS();if(!L.length)L=T;var d=new Date(),w=L[(d.getFullYear()*372+d.getMonth()*31+d.getDate())%L.length],h=head(w);
   var html=profileCard();
-  html+='<div class="subj2"><button class="bm" data-go="#/chapters/m"><b>➗ গণিত</b><span>'+bnNum(RAW.m.terms.length)+'টি শব্দ · ৮ অধ্যায়</span></button><button class="bs" data-go="#/chapters/s"><b>🔬 বিজ্ঞান</b><span>'+bnNum(RAW.s.terms.length)+'টি শব্দ · ১৪ অধ্যায়</span></button><button class="bi" data-go="#/chapters/i"><b>💻 আইসিটি</b><span>'+bnNum(RAW.i.terms.length)+'টি শব্দ · ৫ অধ্যায়</span></button></div>';
-  html+='<div class="sec-t">আজকের শব্দ</div><div class="card wod" data-term="'+w.uid+'"><div class="k">✨ '+SUBJ[w.sj].bn+' · WORD OF THE DAY</div><div class="h">'+esc(h.a)+'</div><div class="e">'+esc(h.b)+'</div><div style="font-size:14px;color:var(--muted);margin-top:4px">'+esc(S.dir==='bv'?w.dbn:w.den)+'</div></div>';
+  var nT=L.length,nS=CORP.bv.filter(inScope).length+CORP.ev.filter(inScope).length;
+  html+='<div class="stats"><div><b>'+bnNum(nT)+'</b><small>পরিভাষা</small></div><div><b>'+bnNum(booksInScope().length*2)+'</b><small>পাঠ্যবই (BV+EV)</small></div><div><b>'+bnNum(nS)+'</b><small>বইয়ের বাক্য</small></div></div>';
+  ['6','7','8'].forEach(function(cl){if(S.cls!=='all'&&S.cls!==cl)return;html+='<div class="clshead">📘 '+CLS[cl]+' শ্রেণি</div>'+bookCards(cl);});
+  html+='<div class="sec-t">আজকের শব্দ</div><div class="card wod" data-term="'+w.uid+'"><div class="k">✨ '+bkLabel(w.bk)+' · WORD OF THE DAY</div><div class="h">'+esc(h.a)+'</div><div class="e">'+esc(h.b)+'</div><div style="font-size:14px;color:var(--muted);margin-top:4px">'+esc(S.dir==='bv'?w.dbn:w.den)+'</div></div>';
   html+='<div class="quick"><button data-go="#/book"><span>📖</span>বইয়ের বাক্য</button><button data-go="#/fav"><span>★</span>প্রিয় শব্দ</button><button data-go="#/quiz"><span>🎯</span>কুইজ</button></div>';
   if(S.recent.length)html+='<div class="sec-t">সাম্প্রতিক খোঁজ</div><div class="chips">'+S.recent.slice(0,8).map(function(r){return '<button class="chip" data-q="'+esc(r)+'">'+esc(r)+'</button>';}).join('')+'</div>';
-  html+='<div class="sec-t">সম্পর্কে</div><div class="card" style="font-size:14px;color:var(--muted)">ষষ্ঠ শ্রেণির <b>গণিত</b>, <b>বিজ্ঞান</b> ও <b>আইসিটি</b> পাঠ্যবইয়ের বাংলা ভার্সন (BV) ও English Version (EV) বিশ্লেষণ করে তৈরি <b>'+bnNum(T.length)+'টি</b> পরিভাষা, সংজ্ঞা, সূত্র, চিত্র এবং বইয়ের '+bnNum(CORP.bv.length+CORP.ev.length)+'টি বাক্য — সম্পূর্ণ অফলাইনে।</div>';
+  html+='<div class="sec-t">সম্পর্কে</div><div class="card" style="font-size:14px;color:var(--muted)">৬ষ্ঠ, ৭ম ও ৮ম শ্রেণির <b>গণিত</b>, <b>বিজ্ঞান</b> ও <b>আইসিটি</b> পাঠ্যবইয়ের বাংলা ভার্সন (BV) ও English Version (EV) বিশ্লেষণ করে তৈরি <b>'+bnNum(T.length)+'টি</b> পরিভাষা, সংজ্ঞা, সূত্র, চিত্র এবং বইয়ের '+bnNum(CORP.bv.length+CORP.ev.length)+'টি বাক্য — সম্পূর্ণ অফলাইনে।</div>';
   V.innerHTML=html;
 }
-function vAbout(){V.innerHTML=profileCard()+'<div class="card" style="font-size:14px;color:var(--muted);text-align:center">TIS-Academy · <b>Teach Idea For Success</b><br>Class 6 (Math, Science, ICT) 2027<br>ষষ্ঠ শ্রেণি গণিত, বিজ্ঞান ও আইসিটি ডিকশনারি</div>';}
+function vAbout(){V.innerHTML=profileCard()+'<div class="card" style="font-size:14px;color:var(--muted);text-align:center">TIS-Academy · <b>Teach Idea For Success</b><br>Class 6–8 (Math, Science, ICT) 2027<br>৬ষ্ঠ–৮ম শ্রেণি গণিত, বিজ্ঞান ও আইসিটি ডিকশনারি</div>';}
 function vSearch(q){
   var r=search(q);
   if(q.trim().length>=2&&S.recent[0]!==q.trim()){S.recent=[q.trim()].concat(S.recent.filter(function(x){return x!==q.trim();})).slice(0,10);store('recent',S.recent);}
-  var html='<div class="count">“'+esc(q)+'” — '+bnNum(r.length)+'টি শব্দ</div>'+r.slice(0,40).map(function(t){return resItem(t,q);}).join('');
+  var html='<div class="count">“'+esc(q)+'” — '+bnNum(r.length)+'টি শব্দ'+(S.cls!=='all'||S.subj!=='all'?' (নির্বাচিত শ্রেণি/বিষয়ে)':'')+'</div>'+r.slice(0,50).map(function(t){return resItem(t,q);}).join('');
   var bs=bookSearch(q,r[0]);
   if(bs.bv.length||bs.ev.length)html+='<div class="sec-t">📖 বইয়ের বাক্যে</div><div class="card">'+bs.bv.slice(0,2).map(function(x){return sentHTML(x,bs.nb);}).join('')+bs.ev.slice(0,2).map(function(x){return sentHTML(x,bs.ne,1);}).join('')+'<div style="margin-top:8px"><button class="btn" data-go="#/book?q='+encodeURIComponent(q)+'">সব বাক্য দেখুন ('+bnNum(bs.bv.length+bs.ev.length)+')</button></div></div>';
-  if(!r.length&&!bs.bv.length&&!bs.ev.length)html+='<div class="empty"><b>🤔</b>কিছু পাওয়া যায়নি। বানান দেখুন বা অন্য ভাষায় লিখুন।</div>';
+  if(!r.length&&!bs.bv.length&&!bs.ev.length)html+='<div class="empty"><b>🤔</b>কিছু পাওয়া যায়নি। বানান দেখুন, অন্য ভাষায় লিখুন বা “সব শ্রেণি / সব বিষয়” বেছে নিন।</div>';
   V.innerHTML=html;
 }
+function imgKey(n){return n.split('_')[0];}
 function imgSrc(n){return (window.TIS_IMG&&window.TIS_IMG[n])||(window.TIS_IMG_URL?'data:image/gif;base64,R0lGODlhAQABAAAAACw=':'img/'+n);}
-var imgWait=[];function loadImgs(cb){imgWait.push(cb);if(imgWait.length>1)return;var sc=document.createElement('script');sc.src=window.TIS_IMG_URL;sc.onload=function(){imgWait.forEach(function(f){f();});imgWait=[];};document.head.appendChild(sc);}
+var imgWait={};function loadImgs(k,cb){(imgWait[k]=imgWait[k]||[]).push(cb);if(imgWait[k].length>1)return;var sc=document.createElement('script');sc.src='imgdata_'+k+'.js';sc.onload=function(){imgWait[k].forEach(function(f){f();});imgWait[k]=[];};document.head.appendChild(sc);}
 function vTerm(uid){
   var t=byId[uid];if(!t){V.innerHTML='<div class="empty">শব্দটি পাওয়া যায়নি</div>';return;}
   var h=head(t),fav=S.fav.indexOf(uid)>=0,c=chName(t);
-  var html='<div class="hero '+t.sj+'"><div class="l1">'+esc(h.a)+'</div><div class="l2">'+esc(h.b)+'</div><div class="tags"><span>'+SUBJ[t.sj].icon+' '+SUBJ[t.sj].bn+'</span><span>অধ্যায় '+bnNum(t.ch)+': '+esc(c[0])+'</span>'+(t.inBook?'':'<span>সহায়ক শব্দ</span>')+'</div><div class="acts"><button id="sayEn">🔊 English</button><button id="sayBn">🔊 বাংলা</button><button id="favB">'+(fav?'★ প্রিয়':'☆ প্রিয়তে যোগ')+'</button><button id="cpB">⧉ কপি</button></div></div>';
+  var html='<div class="hero '+t.sj+'"><div class="l1">'+esc(h.a)+'</div><div class="l2">'+esc(h.b)+'</div><div class="tags"><span>'+CLS[t.cl]+' শ্রেণি</span><span>'+SUBJ[t.sj].icon+' '+SUBJ[t.sj].bn+'</span><span>অধ্যায় '+bnNum(t.ch)+': '+esc(c[0])+'</span>'+(t.inBook?'':'<span>সহায়ক শব্দ</span>')+'</div><div class="acts"><button id="sayEn">🔊 English</button><button id="sayBn">🔊 বাংলা</button><button id="favB">'+(fav?'★ প্রিয়':'☆ প্রিয়তে যোগ')+'</button><button id="cpB">⧉ কপি</button></div></div>';
   html+='<div class="card def"><div class="lbl">সংজ্ঞা · Definition</div><p>'+esc(t.dbn)+'</p><p class="en">'+esc(t.den)+'</p></div>';
   if(t.fx)html+='<div class="card"><div class="lbl">সূত্র / সমীকরণ · Formula</div><div class="fx">'+t.fx.split('▪').map(function(x){return '<span class="it">'+x.trim()+'</span>';}).join('')+'</div></div>';
   if(t.ex)html+='<div class="card"><div class="lbl">উদাহরণ · Example</div><div>'+t.ex+'</div></div>';
   var svg=svgFor(t);if(svg)html+='<div class="card"><div class="lbl">চিত্র · Illustration</div>'+svg+'</div>';
   html+='<div class="card"><div class="lbl">বইয়ের বাক্য · Sentences from the textbooks</div><div class="tabs" id="btabs"><button data-b="bv">বাংলা ভার্সন (BV)</button><button data-b="ev">English Version (EV)</button></div><div id="bbody"></div></div>';
-  var rel=T.filter(function(x){return x.sj===t.sj&&x.ch===t.ch&&x.uid!==uid;}).sort(function(a,b){return Math.abs(a.id-t.id)-Math.abs(b.id-t.id);}).slice(0,8);
+  var same=T.filter(function(x){return x.uid!==uid&&x.sj===t.sj&&x.cl!==t.cl&&(x.bn===t.bn||key(x.en)===key(t.en));});
+  if(same.length)html+='<div class="sec-t">অন্য শ্রেণিতেও আছে</div><div class="chips">'+same.map(function(x){return '<button class="chip" data-term="'+x.uid+'">'+CLS[x.cl]+' শ্রেণি <i>'+esc(chName(x)[0])+'</i></button>';}).join('')+'</div>';
+  var rel=T.filter(function(x){return x.bk===t.bk&&x.ch===t.ch&&x.uid!==uid;}).sort(function(a,b){return Math.abs(a.id-t.id)-Math.abs(b.id-t.id);}).slice(0,8);
   html+='<div class="sec-t">সম্পর্কিত শব্দ</div><div class="chips">'+rel.map(function(x){var hh=head(x);return '<button class="chip" data-term="'+x.uid+'">'+esc(hh.a)+' <i>'+esc(hh.b)+'</i></button>';}).join('')+'</div>';
   V.innerHTML=html;
   function body(b){
@@ -331,7 +368,7 @@ function vTerm(uid){
       if(bk.pages.length)o+='<div style="margin-top:10px;font-size:12.5px;color:var(--muted)">'+(b==='bv'?'যেসব পৃষ্ঠায় আছে:':'Found on pages:')+'</div><div class="pgs">'+bk.pages.map(function(p){return '<span class="pg">'+(b==='bv'?bnNum(p):p)+'</span>';}).join('')+'</div>';
     }
     document.getElementById('bbody').innerHTML=o;
-    if(bk.img&&window.TIS_IMG_URL&&!window.TIS_IMG)loadImgs(function(){var im=document.querySelector('#bbody img[data-n]');if(im){im.src=imgSrc(im.getAttribute('data-n'));im.parentNode.setAttribute('data-zoom',im.src);}});
+    if(bk.img&&window.TIS_IMG_URL&&!(window.TIS_IMG&&window.TIS_IMG[bk.img]))loadImgs(imgKey(bk.img),function(){var im=document.querySelector('#bbody img[data-n]');if(im){im.src=imgSrc(im.getAttribute('data-n'));im.parentNode.setAttribute('data-zoom',im.src);}});
     [].forEach.call(document.querySelectorAll('#btabs button'),function(x){x.classList.toggle('on',x.getAttribute('data-b')===b);});
   }
   body(S.dir);
@@ -339,43 +376,42 @@ function vTerm(uid){
   document.getElementById('sayEn').onclick=function(){speak(t.en.replace(/\(.*?\)/g,''),'en-US');};
   document.getElementById('sayBn').onclick=function(){speak(t.bn,'bn-BD');};
   document.getElementById('favB').onclick=function(){var i=S.fav.indexOf(uid);if(i>=0)S.fav.splice(i,1);else S.fav.push(uid);store('fav',S.fav);this.textContent=i>=0?'☆ প্রিয়তে যোগ':'★ প্রিয়';toast(i>=0?'প্রিয় থেকে সরানো হয়েছে':'প্রিয়তে যোগ হয়েছে');};
-  document.getElementById('cpB').onclick=function(){var s=t.bn+' — '+t.en+'\n'+t.dbn+'\n'+t.den+(t.fx?'\nসূত্র: '+t.fx.replace(/<[^>]+>/g,''):'')+'\n— Class 6 (Math, Science, ICT) 2027 · TIS-Academy';if(window.TISNative&&TISNative.copy){TISNative.copy(s);toast('কপি হয়েছে');return;}try{navigator.clipboard.writeText(s).then(function(){toast('কপি হয়েছে');},function(){toast('কপি করা যায়নি');});}catch(e){toast('কপি করা যায়নি');}};
+  document.getElementById('cpB').onclick=function(){var s=t.bn+' — '+t.en+'\n'+t.dbn+'\n'+t.den+(t.fx?'\nসূত্র: '+t.fx.replace(/<[^>]+>/g,''):'')+'\n— '+bkLabel(t.bk)+' · TIS-Academy Dictionary';if(window.TISNative&&TISNative.copy){TISNative.copy(s);toast('কপি হয়েছে');return;}try{navigator.clipboard.writeText(s).then(function(){toast('কপি হয়েছে');},function(){toast('কপি করা যায়নি');});}catch(e){toast('কপি করা যায়নি');}};
 }
 function speak(s,lang){if(window.TISNative&&TISNative.speak){try{TISNative.speak(s,lang);return;}catch(e){}}try{var u=new SpeechSynthesisUtterance(s);u.lang=lang;u.rate=.9;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){toast('এই ডিভাইসে উচ্চারণ সুবিধা নেই');}}
-function chGrid(sj){return '<div class="sec-t">'+SUBJ[sj].icon+' '+SUBJ[sj].bn+' · '+SUBJ[sj].en+'</div><div class="grid">'+SUBJ[sj].CH.map(function(c,i){var n=RAW[sj].terms.filter(function(t){return t.ch===i+1;}).length;return '<button class="ch '+sj+'" data-go="#/chapter/'+sj+'/'+(i+1)+'"><span class="n">'+bnNum(i+1)+'</span><b>'+(S.dir==='bv'?c[0]:c[1])+'</b><small>'+(S.dir==='bv'?c[1]:c[0])+' · '+bnNum(n)+'টি</small></button>';}).join('')+'</div>';}
-function vChapters(only){var sj=only||(S.subj==='all'?null:S.subj);V.innerHTML=sj?chGrid(sj):chGrid('m')+chGrid('s')+chGrid('i');}
-function vChapter(sj,n){var c=SUBJ[sj]&&SUBJ[sj].CH[n-1];if(!c){vChapters();return;}var list=T.filter(function(t){return t.sj===sj&&t.ch===n;});V.innerHTML='<div class="hero '+sj+'"><div class="l1">'+SUBJ[sj].icon+' অধ্যায় '+bnNum(n)+': '+c[0]+'</div><div class="l2">Chapter '+n+': '+c[1]+'</div><div class="tags"><span>'+SUBJ[sj].bn+'</span><span>'+bnNum(list.length)+'টি শব্দ</span></div></div>'+list.map(function(t){return resItem(t);}).join('');}
+function chGrid(bk){var sj=bk.charAt(1);return '<div class="sec-t">'+SUBJ[sj].icon+' '+bkLabel(bk)+'</div><div class="grid">'+RAW[bk].ch.map(function(c,i){var n=RAW[bk].terms.filter(function(t){return t.ch===i+1;}).length;return '<button class="ch '+sj+'" data-go="#/chapter/'+bk+'/'+(i+1)+'"><span class="n">'+bnNum(i+1)+'</span><b>'+(S.dir==='bv'?c[0]:c[1])+'</b><small>'+(S.dir==='bv'?c[1]:c[0])+' · '+bnNum(n)+'টি</small></button>';}).join('')+'</div>';}
+function vChapters(only){var list=only?[only]:booksInScope();V.innerHTML=list.length?list.map(chGrid).join(''):'<div class="empty">এই শ্রেণি/বিষয়ে কোনো বই নেই</div>';}
+function vChapter(bk,n){var c=RAW[bk]&&RAW[bk].ch[n-1];if(!c){vChapters();return;}var sj=bk.charAt(1),list=T.filter(function(t){return t.bk===bk&&t.ch===n;});V.innerHTML='<div class="hero '+sj+'"><div class="l1">'+SUBJ[sj].icon+' অধ্যায় '+bnNum(n)+': '+c[0]+'</div><div class="l2">Chapter '+n+': '+c[1]+'</div><div class="tags"><span>'+bkLabel(bk)+'</span><span>'+bnNum(list.length)+'টি শব্দ</span></div></div>'+list.map(function(t){return resItem(t);}).join('');}
 function vFav(){var list=S.fav.map(function(i){return byId[i];}).filter(Boolean);V.innerHTML=list.length?'<div class="count">'+bnNum(list.length)+'টি প্রিয় শব্দ</div>'+list.map(function(t){return resItem(t);}).join(''):'<div class="empty"><b>☆</b>এখনো কোনো প্রিয় শব্দ নেই।<br>যেকোনো শব্দ খুলে “☆ প্রিয়তে যোগ” চাপুন।</div>';}
-function vFormulas(){var html='';['m','s','i'].forEach(function(sj){if(!inSubj(sj))return;SUBJ[sj].CH.forEach(function(c,i){var l=T.filter(function(t){return t.sj===sj&&t.ch===i+1&&t.fx;});if(!l.length)return;html+='<div class="sec-t">'+SUBJ[sj].icon+' '+SUBJ[sj].bn+' · অধ্যায় '+bnNum(i+1)+' · '+c[0]+'</div><div class="card">'+l.map(function(t){return '<div class="fxrow" data-term="'+t.uid+'"><b>'+esc(t.bn)+' · '+esc(t.en)+'</b><div>'+t.fx.split('▪').join('<br>')+'</div></div>';}).join('')+'</div>';});});V.innerHTML='<div class="hero"><div class="l1">∑ সূত্র ও সমীকরণ</div><div class="l2">Formulas &amp; Equations</div></div>'+html;}
+function vFormulas(){var html='';booksInScope().forEach(function(bk){RAW[bk].ch.forEach(function(c,i){var l=T.filter(function(t){return t.bk===bk&&t.ch===i+1&&t.fx;});if(!l.length)return;html+='<div class="sec-t">'+SUBJ[bk.charAt(1)].icon+' '+bkLabel(bk)+' · অধ্যায় '+bnNum(i+1)+' · '+c[0]+'</div><div class="card">'+l.map(function(t){return '<div class="fxrow" data-term="'+t.uid+'"><b>'+esc(t.bn)+' · '+esc(t.en)+'</b><div>'+t.fx.split('▪').join('<br>')+'</div></div>';}).join('')+'</div>';});});V.innerHTML='<div class="hero"><div class="l1">∑ সূত্র ও সমীকরণ</div><div class="l2">Formulas &amp; Equations</div></div>'+(html||'<div class="empty">এই নির্বাচনে কোনো সূত্র নেই</div>');}
 function vBook(q){
-  var html='<div class="card"><div class="lbl">বইয়ের পূর্ণ-পাঠ অনুসন্ধান</div><div style="font-size:14px;color:var(--muted)">উপরের বক্সে যেকোনো শব্দ লিখুন — বাংলা ও ইংরেজি বইয়ের মিলে যাওয়া বাক্য হাইলাইটসহ দেখাবে।</div></div>';
+  var html='<div class="card"><div class="lbl">বইয়ের পূর্ণ-পাঠ অনুসন্ধান</div><div style="font-size:14px;color:var(--muted)">উপরের বক্সে যেকোনো শব্দ লিখুন — নির্বাচিত শ্রেণি ও বিষয়ের বাংলা ও ইংরেজি বইয়ের মিলে যাওয়া বাক্য হাইলাইটসহ দেখাবে।</div></div>';
   if(!q){V.innerHTML=html;return;}
   var r=search(q),bs=bookSearch(q,r[0]);if(r[0])html+=resItem(r[0],q);
   html+='<div class="tabs" id="bt2"><button data-b="bv">বাংলা ভার্সন ('+bnNum(bs.bv.length)+')</button><button data-b="ev">English Version ('+bs.ev.length+')</button></div><div id="bb2"></div>';V.innerHTML=html;
-  var show=function(b){var l=bs[b];document.getElementById('bb2').innerHTML=l.length?'<div class="card">'+l.slice(0,120).map(function(x){return sentHTML(x,b==='bv'?bs.nb:bs.ne,b==='ev');}).join('')+'</div>':'<div class="empty">কোনো বাক্য পাওয়া যায়নি</div>';[].forEach.call(document.querySelectorAll('#bt2 button'),function(x){x.classList.toggle('on',x.getAttribute('data-b')===b);});};
+  var show=function(b){var l=bs[b];document.getElementById('bb2').innerHTML=l.length?'<div class="card">'+l.slice(0,150).map(function(x){return sentHTML(x,b==='bv'?bs.nb:bs.ne,b==='ev');}).join('')+'</div>':'<div class="empty">কোনো বাক্য পাওয়া যায়নি</div>';[].forEach.call(document.querySelectorAll('#bt2 button'),function(x){x.classList.toggle('on',x.getAttribute('data-b')===b);});};
   show(isBn(q)?(bs.bv.length?'bv':'ev'):(bs.ev.length?'ev':'bv'));
   document.getElementById('bt2').onclick=function(e){var b=e.target.closest('button');if(b)show(b.getAttribute('data-b'));};
 }
 function vQuiz(){
-  var P=TS(),qs=[],pool=P.slice();for(var i=0;i<10;i++){var a=pool.splice(Math.floor(Math.random()*pool.length),1)[0];var opts=[a];while(opts.length<4){var o=P[Math.floor(Math.random()*P.length)];if(opts.indexOf(o)<0)opts.push(o);}opts.sort(function(){return Math.random()-.5;});qs.push({a:a,o:opts});}
+  var P=TS();if(P.length<4)P=T;var qs=[],pool=P.slice();for(var i=0;i<10;i++){var a=pool.splice(Math.floor(Math.random()*pool.length),1)[0];var opts=[a];while(opts.length<4){var o=P[Math.floor(Math.random()*P.length)];if(opts.indexOf(o)<0&&o.en!==a.en)opts.push(o);}opts.sort(function(){return Math.random()-.5;});qs.push({a:a,o:opts});}
   var n=0,score=0;
   function render(){
     if(n>=qs.length){V.innerHTML='<div class="card" style="text-align:center"><div style="font-size:48px">🏆</div><div style="font-size:22px;font-weight:800">'+bnNum(score)+' / '+bnNum(qs.length)+'</div><p>'+(score>=8?'অসাধারণ!':score>=5?'ভালো হয়েছে!':'আরও অনুশীলন করো!')+'</p><button class="btn" id="again">আবার খেলুন</button></div>';document.getElementById('again').onclick=vQuiz;return;}
     var q=qs[n],bv=S.dir==='bv';
-    V.innerHTML='<div class="count">প্রশ্ন '+bnNum(n+1)+' / '+bnNum(qs.length)+' · স্কোর '+bnNum(score)+'</div><div class="card"><div class="lbl">'+SUBJ[q.a.sj].bn+' · '+(bv?'ইংরেজি পরিভাষা কোনটি?':'What is the Bangla term?')+'</div><div style="font-size:24px;font-weight:800">'+esc(bv?q.a.bn:q.a.en)+'</div>'+q.o.map(function(o,i){return '<button class="qopt" data-i="'+i+'">'+esc(bv?o.en:o.bn)+'</button>';}).join('')+'</div>';
+    V.innerHTML='<div class="count">প্রশ্ন '+bnNum(n+1)+' / '+bnNum(qs.length)+' · স্কোর '+bnNum(score)+'</div><div class="card"><div class="lbl">'+bkLabel(q.a.bk)+' · '+(bv?'ইংরেজি পরিভাষা কোনটি?':'What is the Bangla term?')+'</div><div style="font-size:24px;font-weight:800">'+esc(bv?q.a.bn:q.a.en)+'</div>'+q.o.map(function(o,i){return '<button class="qopt" data-i="'+i+'">'+esc(bv?o.en:o.bn)+'</button>';}).join('')+'</div>';
     [].forEach.call(document.querySelectorAll('.qopt'),function(b){b.onclick=function(){var ok=q.o[+b.getAttribute('data-i')]===q.a;if(ok)score++;[].forEach.call(document.querySelectorAll('.qopt'),function(x){x.disabled=true;if(q.o[+x.getAttribute('data-i')]===q.a)x.classList.add('ok');});if(!ok)b.classList.add('no');setTimeout(function(){n++;render();},ok?700:1500);};});
   }
   render();
 }
-// ---------- router (in-app)
 var CUR='#/',STK=[];
-function setNav(h){var bb=document.getElementById('backBtn');bb.style.display=STK.length?'grid':'none';[].forEach.call(document.querySelectorAll('nav.bot button'),function(b){var g=b.getAttribute('data-go');b.classList.toggle('on',g==='#/'?h==='#/':h.indexOf(g)===0);});}
+function setNav(h){document.getElementById('backBtn').style.display=STK.length?'grid':'none';[].forEach.call(document.querySelectorAll('nav.bot button'),function(b){var g=b.getAttribute('data-go');b.classList.toggle('on',g==='#/'?h==='#/':h.indexOf(g)===0);});}
 function route(){
   var h=CUR,m;setNav(h);
-  if((m=h.match(/^#\/term\/(\w+)/)))return vTerm(m[1]);
+  if((m=h.match(/^#\/term\/([\w-]+)/)))return vTerm(m[1]);
   if((m=h.match(/^#\/search\?q=(.*)$/)))return vSearch(decodeURIComponent(m[1]));
-  if((m=h.match(/^#\/chapter\/(m|s|i)\/(\d+)/)))return vChapter(m[1],+m[2]);
-  if((m=h.match(/^#\/chapters\/(m|s|i)/)))return vChapters(m[1]);
+  if((m=h.match(/^#\/chapter\/(\d[msi])\/(\d+)/)))return vChapter(m[1],+m[2]);
+  if((m=h.match(/^#\/chapters\/(\d[msi])/)))return vChapters(m[1]);
   if(h.indexOf('#/chapters')===0)return vChapters();
   if(h.indexOf('#/book')===0){var mm=h.match(/q=(.*)$/);return vBook(mm?decodeURIComponent(mm[1]):qEl.value.trim());}
   if(h.indexOf('#/formulas')===0)return vFormulas();
@@ -396,11 +432,13 @@ qEl.addEventListener('input',function(){clearTimeout(deb);var v=qEl.value;deb=se
 },180);});
 qEl.addEventListener('keydown',function(e){if(e.key==='Enter')qEl.blur();});
 document.getElementById('clr').onclick=function(){qEl.value='';qEl.focus();if(CUR.indexOf('#/search')===0)go('#/');};
-function setDir(d,silent){S.dir=d;store('dir',d);[].forEach.call(document.querySelectorAll('#dir button'),function(b){b.classList.toggle('on',b.getAttribute('data-d')===d);});if(!silent)toast(d==='bv'?'বাংলা → English':'English → বাংলা');}
-function setSubj(s){S.subj=s;store('subj',s);[].forEach.call(document.querySelectorAll('#subj button'),function(b){b.classList.toggle('on',b.getAttribute('data-s')===s);});}
-document.getElementById('dir').onclick=function(e){var b=e.target.closest('button');if(!b)return;setDir(b.getAttribute('data-d'));route();};
-document.getElementById('subj').onclick=function(e){var b=e.target.closest('button');if(!b)return;setSubj(b.getAttribute('data-s'));toast(b.textContent);route();};
-setDir(S.dir,1);setSubj(S.subj);
+function setDir(d,silent){S.dir=d;store('dir',d);document.getElementById('dirBtn').innerHTML=d==='bv'?'<b>বাং→EN</b>BV→EV':'<b>EN→বাং</b>EV→BV';if(!silent)toast(d==='bv'?'বাংলা → English':'English → বাংলা');}
+function setSeg(id,attr,val){[].forEach.call(document.querySelectorAll('#'+id+' button'),function(b){b.classList.toggle('on',b.getAttribute(attr)===val);});}
+document.getElementById('dirBtn').onclick=function(){setDir(S.dir==='bv'?'ev':'bv');route();};
+document.getElementById('subj').onclick=function(e){var b=e.target.closest('button');if(!b)return;S.subj=b.getAttribute('data-s');store('subj',S.subj);setSeg('subj','data-s',S.subj);route();};
+document.getElementById('cls').onclick=function(e){var b=e.target.closest('button');if(!b)return;S.cls=b.getAttribute('data-c');store('cls',S.cls);setSeg('cls','data-c',S.cls);route();};
+(function(){var avail={};BOOKS.forEach(function(k){avail[k.charAt(0)]=1;});var n=Object.keys(avail).length;[].forEach.call(document.querySelectorAll('#cls button'),function(x){var c=x.getAttribute('data-c');if(c!=='all'&&!avail[c])x.style.display='none';});if(n<2){document.getElementById('cls').style.display='none';S.cls='all';}else if(S.cls!=='all'&&!avail[S.cls])S.cls='all';})();
+setDir(S.dir,1);setSeg('subj','data-s',S.subj);setSeg('cls','data-c',S.cls);
 document.addEventListener('click',function(e){
   var el=e.target.closest('a[href^="http"],[data-term],[data-go],[data-q],[data-zoom]');if(!el)return;
   if(el.tagName==='A')return;

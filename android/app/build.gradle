@@ -6,8 +6,8 @@ android {
         applicationId "com.tisacademy.smartdict"
         minSdk 21
         targetSdk 34
-        versionCode 4
-        versionName "2027.4"
+        versionCode 5
+        versionName "2027.5"
     }
     // Fixed signing key so every APK built by GitHub Actions can update the previous one.
     // For a Play Store release, replace this with your own private keystore.
